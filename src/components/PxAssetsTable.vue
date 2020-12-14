@@ -20,7 +20,9 @@
           <img class="w-10 h-10" :src="getIconURI(c)" :alt = "c.name" />
         </td>
         <td><b>#{{c.rank}}</b></td>
-        <td>{{c.name}}</td>
+        <td>
+          <router-link :to="{name:'coin-detail',params:{id:c.id}}">{{c.name}}</router-link>
+        </td>
         <td>{{c.priceUsd | dollar}}</td>
         <td>{{c.marketCapUsd | dollar}}</td>
         <td :class="c.changePercent24Hr > 0 ? 'text-green-600' : 'text-red-600'">
@@ -64,7 +66,7 @@ export default {
     this.getData();
   },
   mounted(){
-    setInterval(this.getData, 1000);
+    // setInterval(this.getData, 1000);
   },
 };
 </script>
